@@ -1,0 +1,564 @@
+import 'package:canvas_menu/screen/bir.dart';
+import 'package:canvas_menu/screen/dort.dart';
+import 'package:canvas_menu/screen/iki.dart';
+import 'package:canvas_menu/screen/uc.dart';
+import 'package:canvas_menu/widget/pointer.dart';
+import 'package:flutter/material.dart';
+
+import '../widget/custom_path.dart';
+
+class CanvasMenu extends StatefulWidget {
+  const CanvasMenu({super.key});
+
+  @override
+  State<CanvasMenu> createState() => _CanvasMenuState();
+}
+
+class _CanvasMenuState extends State<CanvasMenu> {
+  int index = 1;
+  List<Widget> pages = const [
+    Bir(),
+    Iki(),
+    Uc(),
+    Dort(),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          Row(
+            children: [
+              //clipper gap area
+              Container(
+                width: 65,
+                height: 753,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF4B447C),
+                      Color(0xFF5A5180),
+                    ],
+                  ),
+                ),
+
+                //clipper
+                child: Column(
+                  children: [
+                    ClipPath(
+                      clipper: MyClipper(),
+                      child: Container(
+                        width: 65,
+                        height: 753,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                            colors: [
+                              Color(0xFF59479e),
+                              Color(0xFF836FAF),
+                            ],
+                            begin: Alignment.topRight,
+                            end: Alignment.bottomLeft,
+                          ),
+                        ),
+                        padding:
+                            const EdgeInsets.only(top: 30, left: 15, right: 15),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const VerticalDivider(width: 1, color: Colors.black),
+              //right panel
+              Container(
+                height: 753,
+                width: 200,
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0xFF564C8C),
+                      Color(0xFF786896),
+                    ],
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Text(
+                            "Explore",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      height: 1,
+                      color: Colors.white60,
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.home,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  "Home",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.music_note,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Music",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.gamepad,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Gaming",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.cast_for_education,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Education",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.science,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Science & Tech",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.play_circle,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Entertainament",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () {},
+                        hoverColor: const Color(0xFF2D2655),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SizedBox(
+                            width: 150,
+                            child: Row(
+                              children: const [
+                                Icon(
+                                  Icons.hub_rounded,
+                                  color: Colors.white60,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Student Hubs",
+                                  style: TextStyle(
+                                    color: Colors.white60,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          //avatars
+          Positioned(
+            top: 15,
+            left: -6,
+            child: Column(
+              children: [
+                const Padding(
+                  padding: EdgeInsets.only(left: 12),
+                  child: CircleAvatar(
+                    radius: 18,
+                    backgroundImage: NetworkImage(
+                      "data:image/jpeg;base64,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",
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 75),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      index = 1;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      ClipPath(
+                        clipper: PointerClipper(),
+                        child: index == 1
+                            ? Container(
+                                width: 25,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepOrange,
+                                      Colors.yellow,
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 25,
+                                height: 30,
+                                color: Colors.transparent,
+                              ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: index == 1
+                                  ? Colors.yellow.withOpacity(0.4)
+                                  : Colors.transparent,
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: const CircleAvatar(
+                          radius: 18,
+                          backgroundImage: NetworkImage(
+                            "https://media.istockphoto.com/id/1306435820/photo/neon-sign-on-a-brick-wall-glowing-gamepad-icon-abstract-background-spectrum-vibrant-colors-3d.jpg?b=1&s=170667a&w=0&k=20&c=vBW8kzv8FWyZlJVqMk6T-U4mX2dBSTcWWqNRLnd-h5s=",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      index = 2;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      ClipPath(
+                        clipper: PointerClipper(),
+                        child: index == 2
+                            ? Container(
+                                width: 25,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepOrange,
+                                      Colors.yellow,
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 25,
+                                height: 30,
+                                color: Colors.transparent,
+                              ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: index == 2
+                                  ? Colors.yellow.withOpacity(0.4)
+                                  : Colors.transparent,
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: const CircleAvatar(
+                          radius: 18,
+                          backgroundImage: NetworkImage(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTndkeD1gghcDhFfxlu49nzizsVjhmScgMbSQ&usqp=CAU",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      index = 3;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      ClipPath(
+                        clipper: PointerClipper(),
+                        child: index == 3
+                            ? Container(
+                                width: 25,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepOrange,
+                                      Colors.yellow,
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 25,
+                                height: 30,
+                                color: Colors.transparent,
+                              ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: index == 3
+                                  ? Colors.yellow.withOpacity(0.4)
+                                  : Colors.transparent,
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: const CircleAvatar(
+                          radius: 18,
+                          backgroundImage: NetworkImage(
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbOknz5rZG2FHSIvPcJMNEb_KY3BhCQyAZSA&usqp=CAU",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      index = 4;
+                    });
+                  },
+                  child: Row(
+                    children: [
+                      ClipPath(
+                        clipper: PointerClipper(),
+                        child: index == 4
+                            ? Container(
+                                width: 25,
+                                height: 30,
+                                decoration: const BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      Colors.deepOrange,
+                                      Colors.yellow,
+                                    ],
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 25,
+                                height: 30,
+                                color: Colors.transparent,
+                              ),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: index == 4
+                                  ? Colors.yellow.withOpacity(0.4)
+                                  : Colors.transparent,
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: const Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: const CircleAvatar(
+                          radius: 18,
+                          backgroundImage: NetworkImage(
+                            "https://iatkv.tmgrup.com.tr/bf1b58/616/321/0/0/1174/612?u=https%3A%2F%2Fitkv.tmgrup.com.tr%2F2020%2F12%2F17%2Fkurtlar-vadisiyle-nam-salan-efsane-palanin-son-hali-cok-konusuldu-dagda-keklik-burada-domates-1608229373524.jpg",
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
